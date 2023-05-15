@@ -2,88 +2,108 @@
 //  AccountsVC.swift
 //  UBank
 //
-//  Created by Corry Timothy on 6/5/2023.
+//  Created by Corry Timothy on 8/5/2023.
 //
 
 import UIKit
+import Firebase
+import Combine
 
-class AccountsVC: UITableViewController {
+class AccountsVC: UIViewController {
+    var events = [Info]()
+    let ref = Database.database().reference()
+    var tableView: UITableView  =   UITableView()
+    let homeCellID = "homeCellID"
+var currentBalancePass = ""
+    var avaliableBalancePass = ""
+    var SAccount = ""
+    var mainCor: MainCoordinator
+    init(coordinator: MainCoordinator) {
+        self.mainCor = coordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        view.backgroundColor = UIColor.Background
+       setUpTableView()
+        setUpTableViewDetails()
+        ToolBarSetup()
+        fetchData()
+    }
+    @objc func goingToProfile() {
     }
 
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    let CalendarImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.masksToBounds = true
+        imageView.image = UIImage(systemName: "calendar.badge.clock")
+        imageView.tintColor = UIColor.gray
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.zPosition = 3
+        return imageView
+    }()
+    var AccountsLabel: UILabel = {
+        var label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.layer.zPosition = 2
+        label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.heavy)
+        label.textColor = UIColor.CustomBlack
+        label.backgroundColor = UIColor.clear
+        label.text = "Accounts"
+        label.clipsToBounds = true
+        label.sizeToFit()
+        return label
+    }()
+    var UpcomingLabel: UILabel = {
+        var label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.layer.zPosition = 2
+        label.font = UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.regular)
+        label.textColor = UIColor.Customgrey
+        label.backgroundColor = UIColor.clear
+        label.text = "See your upcoming scheduled payments"
+        label.clipsToBounds = true
+        label.sizeToFit()
+        return label
+    }()
+    var WhiteLabel: UILabel = {
+        var label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.layer.zPosition = 2
+        label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.heavy)
+        label.textColor = UIColor.black
+        label.backgroundColor = UIColor.white
+        label.clipsToBounds = true
+        label.sizeToFit()
+        return label
+    }()
+    
+    @objc func fetchData() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let userMessagesRef = Database.database().reference().child("users").child(uid).child("Accounts")
+        userMessagesRef.observe(.childAdded, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                let event = Info(dictionary: dictionary)
+                event.id = snapshot.key
+                event.CurrentBalance = dictionary["CurrentBalance"] as? String
+                event.AvailableBalance = dictionary["AvailableBalance"] as? String
+                event.ProductName = dictionary["ProductName"] as? String
+                event.AccountId = dictionary["AccountId"] as? String
+                self.events.append(event)
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
+            }
+        }, withCancel: nil)
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

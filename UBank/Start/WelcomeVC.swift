@@ -1,11 +1,12 @@
 //
-//  ViewController.swift
-//  EatClubTest
+//  WelcomeVC.swift
+//  UBank
 //
-//  Created by Corry Timothy on 28/5/2022.
+//  Created by Corry Timothy on 8/5/2023.
 //
 
 import UIKit
+import Firebase
 
 class WelcomeVC: UIViewController {
     
@@ -20,28 +21,17 @@ class WelcomeVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(r: 255, g: 126, b: 10)
-        
-     
-        
+        view.backgroundColor = UIColor.white
         Constraints()
-        
     }
     
     func Constraints() {
         
-        view.addSubview(WelcomeLabel)
-        WelcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 268).isActive = true
-        WelcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        WelcomeLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
-        WelcomeLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        
         view.addSubview(logoImage)
-        logoImage.topAnchor.constraint(equalTo: WelcomeLabel.bottomAnchor, constant: 0).isActive = true
+        logoImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
         logoImage.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        logoImage.heightAnchor.constraint(equalToConstant: 150).isActive = true
-        logoImage.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        
+        logoImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        logoImage.widthAnchor.constraint(equalToConstant: 120).isActive = true
         
         view.addSubview(UBankLabel)
         UBankLabel.topAnchor.constraint(equalTo: logoImage.bottomAnchor, constant: 0).isActive = true
@@ -49,9 +39,7 @@ class WelcomeVC: UIViewController {
         UBankLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
         UBankLabel.widthAnchor.constraint(equalToConstant: 100).isActive = true
         
-        
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.mainCor.start()
         }
         
@@ -62,12 +50,11 @@ class WelcomeVC: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.masksToBounds = true
         imageView.image = UIImage(systemName: "banknote.fill")
-        imageView.tintColor = UIColor.BankNote
+        imageView.tintColor = UIColor.MoneyGreen
         imageView.contentMode = .scaleAspectFit
         imageView.layer.zPosition = 3
         return imageView
     }()
-    
     var WelcomeLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -82,7 +69,6 @@ class WelcomeVC: UIViewController {
         label.sizeToFit()
         return label
     }()
-    
     var UBankLabel: UILabel = {
         var label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -97,8 +83,4 @@ class WelcomeVC: UIViewController {
         label.sizeToFit()
         return label
     }()
-    
-    
 }
-
-

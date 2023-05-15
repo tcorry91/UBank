@@ -1,8 +1,8 @@
 //
-//  TableViewCell.swift
-//  EatClubTest
+//  TransactionCell.swift
+//  UBank
 //
-//  Created by Corry Timothy on 28/5/2022.
+//  Created by Corry Timothy on 8/5/2023.
 //
 
 import UIKit

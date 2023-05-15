@@ -7,15 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B614301D2A0F2F1A00168336 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B614301C2A0F2F1A00168336 /* FirebaseAuth */; };
+		B614301F2A0F2F5C00168336 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B614301E2A0F2F5C00168336 /* FirebaseDatabase */; };
+		B631049B2A0F31880062D89A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B631049A2A0F31880062D89A /* FirebaseAuth */; };
+		B631049D2A0F318E0062D89A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B631049C2A0F318E0062D89A /* FirebaseDatabase */; };
+		B67E36EE2A0AB3E7003743B9 /* AccountsVCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E36ED2A0AB3E7003743B9 /* AccountsVCTableView.swift */; };
+		B67E36F02A0AB593003743B9 /* AccountsVCLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E36EF2A0AB593003743B9 /* AccountsVCLayout.swift */; };
+		B67E36F22A0AB784003743B9 /* TransactionsVCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E36F12A0AB784003743B9 /* TransactionsVCTableView.swift */; };
+		B67E36F42A0AB7EC003743B9 /* TransactionVCLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E36F32A0AB7EC003743B9 /* TransactionVCLayout.swift */; };
+		B67E36F62A0AB8B2003743B9 /* TransactionDetailsVCTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E36F52A0AB8B2003743B9 /* TransactionDetailsVCTableView.swift */; };
+		B67E36F82A0AB940003743B9 /* TransactionsDetailsLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E36F72A0AB940003743B9 /* TransactionsDetailsLayout.swift */; };
+		B67E36FA2A0ABB03003743B9 /* CustomTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E36F92A0ABB03003743B9 /* CustomTableView.swift */; };
+		B67E36FC2A0AC8B8003743B9 /* AccountsVCToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E36FB2A0AC8B8003743B9 /* AccountsVCToolbar.swift */; };
+		B67E36FE2A0AC919003743B9 /* TransactionVCToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B67E36FD2A0AC919003743B9 /* TransactionVCToolbar.swift */; };
+		B69F8C5A2A11CEFD004AF521 /* TransactionsVCSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69F8C592A11CEFD004AF521 /* TransactionsVCSearch.swift */; };
+		B6B5CEA92A095C3800CF86C7 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B5CEA82A095C3800CF86C7 /* Alert.swift */; };
 		B6BF9B042A03C91D0012CCCF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BF9B032A03C91D0012CCCF /* AppDelegate.swift */; };
 		B6BF9B062A03C91D0012CCCF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BF9B052A03C91D0012CCCF /* SceneDelegate.swift */; };
-		B6BF9B082A03C91D0012CCCF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BF9B072A03C91D0012CCCF /* ViewController.swift */; };
+		B6BF9B082A03C91D0012CCCF /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BF9B072A03C91D0012CCCF /* LoginVC.swift */; };
 		B6BF9B0B2A03C91D0012CCCF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BF9B092A03C91D0012CCCF /* Main.storyboard */; };
 		B6BF9B0D2A03C91F0012CCCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6BF9B0C2A03C91F0012CCCF /* Assets.xcassets */; };
 		B6BF9B102A03C91F0012CCCF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BF9B0E2A03C91F0012CCCF /* LaunchScreen.storyboard */; };
 		B6BF9B1B2A03C91F0012CCCF /* UBankTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BF9B1A2A03C91F0012CCCF /* UBankTests.swift */; };
 		B6BF9B252A03C91F0012CCCF /* UBankUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BF9B242A03C91F0012CCCF /* UBankUITests.swift */; };
 		B6BF9B272A03C91F0012CCCF /* UBankUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BF9B262A03C91F0012CCCF /* UBankUITestsLaunchTests.swift */; };
+		B6BF9B342A03C9850012CCCF /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BF9B332A03C9850012CCCF /* MainCoordinator.swift */; };
+		B6BF9B362A03C99C0012CCCF /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BF9B352A03C99C0012CCCF /* Coordinator.swift */; };
+		B6C4E98B2A07CA46002C9845 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = B6C4E98A2A07CA46002C9845 /* FirebaseAnalytics */; };
+		B6C4E98D2A07CA46002C9845 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B6C4E98C2A07CA46002C9845 /* FirebaseAuth */; };
+		B6C4E98F2A07CA46002C9845 /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B6C4E98E2A07CA46002C9845 /* FirebaseAuthCombine-Community */; };
+		B6C4E9912A07CA46002C9845 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B6C4E9902A07CA46002C9845 /* FirebaseDatabase */; };
+		B6C4E9932A07CA46002C9845 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B6C4E9922A07CA46002C9845 /* FirebaseDatabaseSwift */; };
+		B6C4E9972A07D6DC002C9845 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B6C4E9962A07D6DC002C9845 /* GoogleService-Info.plist */; };
+		B6C4E99A2A07E71F002C9845 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C4E9992A07E71F002C9845 /* DataBase.swift */; };
+		B6C4E9A02A082198002C9845 /* TransactionDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6C4E99F2A082198002C9845 /* TransactionDetailsCell.swift */; };
+		B6D330C22A06705700B34157 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D330C12A06705700B34157 /* WelcomeVC.swift */; };
+		B6D330C42A06767C00B34157 /* CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D330C32A06767C00B34157 /* CustomColors.swift */; };
+		B6D330CB2A067BB000B34157 /* AccountsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D330CA2A067BB000B34157 /* AccountsVC.swift */; };
+		B6D330CD2A067BC000B34157 /* AccountsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D330CC2A067BC000B34157 /* AccountsCell.swift */; };
+		B6D330D02A06A27100B34157 /* TransactionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D330CF2A06A27100B34157 /* TransactionCell.swift */; };
+		B6D330D22A06A27A00B34157 /* TransactionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D330D12A06A27A00B34157 /* TransactionsVC.swift */; };
+		B6D330D72A06B63A00B34157 /* TransactionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D330D62A06B63A00B34157 /* TransactionDetailsVC.swift */; };
+		B6F76DCC2A096D780077E422 /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6F76DCB2A096D780077E422 /* Misc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +69,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B67E36ED2A0AB3E7003743B9 /* AccountsVCTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVCTableView.swift; sourceTree = "<group>"; };
+		B67E36EF2A0AB593003743B9 /* AccountsVCLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVCLayout.swift; sourceTree = "<group>"; };
+		B67E36F12A0AB784003743B9 /* TransactionsVCTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsVCTableView.swift; sourceTree = "<group>"; };
+		B67E36F32A0AB7EC003743B9 /* TransactionVCLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionVCLayout.swift; sourceTree = "<group>"; };
+		B67E36F52A0AB8B2003743B9 /* TransactionDetailsVCTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsVCTableView.swift; sourceTree = "<group>"; };
+		B67E36F72A0AB940003743B9 /* TransactionsDetailsLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDetailsLayout.swift; sourceTree = "<group>"; };
+		B67E36F92A0ABB03003743B9 /* CustomTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableView.swift; sourceTree = "<group>"; };
+		B67E36FB2A0AC8B8003743B9 /* AccountsVCToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVCToolbar.swift; sourceTree = "<group>"; };
+		B67E36FD2A0AC919003743B9 /* TransactionVCToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionVCToolbar.swift; sourceTree = "<group>"; };
+		B69F8C592A11CEFD004AF521 /* TransactionsVCSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsVCSearch.swift; sourceTree = "<group>"; };
+		B6B5CEA82A095C3800CF86C7 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		B6BF9B002A03C91D0012CCCF /* UBank.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UBank.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BF9B032A03C91D0012CCCF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B6BF9B052A03C91D0012CCCF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B6BF9B072A03C91D0012CCCF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B6BF9B072A03C91D0012CCCF /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		B6BF9B0A2A03C91D0012CCCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B6BF9B0C2A03C91F0012CCCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6BF9B0F2A03C91F0012CCCF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +93,19 @@
 		B6BF9B202A03C91F0012CCCF /* UBankUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UBankUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6BF9B242A03C91F0012CCCF /* UBankUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBankUITests.swift; sourceTree = "<group>"; };
 		B6BF9B262A03C91F0012CCCF /* UBankUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UBankUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		B6BF9B332A03C9850012CCCF /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		B6BF9B352A03C99C0012CCCF /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		B6C4E9962A07D6DC002C9845 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B6C4E9992A07E71F002C9845 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
+		B6C4E99F2A082198002C9845 /* TransactionDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsCell.swift; sourceTree = "<group>"; };
+		B6D330C12A06705700B34157 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		B6D330C32A06767C00B34157 /* CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomColors.swift; sourceTree = "<group>"; };
+		B6D330CA2A067BB000B34157 /* AccountsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsVC.swift; sourceTree = "<group>"; };
+		B6D330CC2A067BC000B34157 /* AccountsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsCell.swift; sourceTree = "<group>"; };
+		B6D330CF2A06A27100B34157 /* TransactionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCell.swift; sourceTree = "<group>"; };
+		B6D330D12A06A27A00B34157 /* TransactionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsVC.swift; sourceTree = "<group>"; };
+		B6D330D62A06B63A00B34157 /* TransactionDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionDetailsVC.swift; sourceTree = "<group>"; };
+		B6F76DCB2A096D780077E422 /* Misc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Misc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +113,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B6C4E9932A07CA46002C9845 /* FirebaseDatabaseSwift in Frameworks */,
+				B6C4E98B2A07CA46002C9845 /* FirebaseAnalytics in Frameworks */,
+				B6C4E98F2A07CA46002C9845 /* FirebaseAuthCombine-Community in Frameworks */,
+				B6C4E9912A07CA46002C9845 /* FirebaseDatabase in Frameworks */,
+				B6C4E98D2A07CA46002C9845 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +125,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B631049D2A0F318E0062D89A /* FirebaseDatabase in Frameworks */,
+				B631049B2A0F31880062D89A /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +134,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B614301F2A0F2F5C00168336 /* FirebaseDatabase in Frameworks */,
+				B614301D2A0F2F1A00168336 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B614301B2A0F2F1A00168336 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B6BF9AF72A03C91D0012CCCF = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +156,7 @@
 				B6BF9B192A03C91F0012CCCF /* UBankTests */,
 				B6BF9B232A03C91F0012CCCF /* UBankUITests */,
 				B6BF9B012A03C91D0012CCCF /* Products */,
+				B614301B2A0F2F1A00168336 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +173,17 @@
 		B6BF9B022A03C91D0012CCCF /* UBank */ = {
 			isa = PBXGroup;
 			children = (
+				B6C4E9982A07E713002C9845 /* Database */,
+				B6D330D52A06B5D800B34157 /* TransactionsDetail */,
+				B6D330CE2A06A25E00B34157 /* Transactions */,
+				B6D330C92A067B9E00B34157 /* Accounts */,
+				B6D330C82A06797A00B34157 /* Login */,
+				B6D330C72A06796D00B34157 /* Coordinator */,
+				B6D330C62A06796000B34157 /* Misc */,
+				B6D330C52A06795300B34157 /* Start */,
 				B6BF9B032A03C91D0012CCCF /* AppDelegate.swift */,
 				B6BF9B052A03C91D0012CCCF /* SceneDelegate.swift */,
-				B6BF9B072A03C91D0012CCCF /* ViewController.swift */,
+				B6C4E9962A07D6DC002C9845 /* GoogleService-Info.plist */,
 				B6BF9B092A03C91D0012CCCF /* Main.storyboard */,
 				B6BF9B0C2A03C91F0012CCCF /* Assets.xcassets */,
 				B6BF9B0E2A03C91F0012CCCF /* LaunchScreen.storyboard */,
@@ -127,6 +209,86 @@
 			path = UBankUITests;
 			sourceTree = "<group>";
 		};
+		B6C4E9982A07E713002C9845 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				B6C4E9992A07E71F002C9845 /* DataBase.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		B6D330C52A06795300B34157 /* Start */ = {
+			isa = PBXGroup;
+			children = (
+				B6D330C12A06705700B34157 /* WelcomeVC.swift */,
+			);
+			path = Start;
+			sourceTree = "<group>";
+		};
+		B6D330C62A06796000B34157 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				B6D330C32A06767C00B34157 /* CustomColors.swift */,
+				B6B5CEA82A095C3800CF86C7 /* Alert.swift */,
+				B6F76DCB2A096D780077E422 /* Misc.swift */,
+				B67E36F92A0ABB03003743B9 /* CustomTableView.swift */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		B6D330C72A06796D00B34157 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B6BF9B332A03C9850012CCCF /* MainCoordinator.swift */,
+				B6BF9B352A03C99C0012CCCF /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B6D330C82A06797A00B34157 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B6BF9B072A03C91D0012CCCF /* LoginVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B6D330C92A067B9E00B34157 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				B6D330CA2A067BB000B34157 /* AccountsVC.swift */,
+				B67E36FB2A0AC8B8003743B9 /* AccountsVCToolbar.swift */,
+				B67E36EF2A0AB593003743B9 /* AccountsVCLayout.swift */,
+				B67E36ED2A0AB3E7003743B9 /* AccountsVCTableView.swift */,
+				B6D330CC2A067BC000B34157 /* AccountsCell.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		B6D330CE2A06A25E00B34157 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				B6D330D12A06A27A00B34157 /* TransactionsVC.swift */,
+				B69F8C592A11CEFD004AF521 /* TransactionsVCSearch.swift */,
+				B67E36FD2A0AC919003743B9 /* TransactionVCToolbar.swift */,
+				B67E36F32A0AB7EC003743B9 /* TransactionVCLayout.swift */,
+				B67E36F12A0AB784003743B9 /* TransactionsVCTableView.swift */,
+				B6D330CF2A06A27100B34157 /* TransactionCell.swift */,
+			);
+			path = Transactions;
+			sourceTree = "<group>";
+		};
+		B6D330D52A06B5D800B34157 /* TransactionsDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B6D330D62A06B63A00B34157 /* TransactionDetailsVC.swift */,
+				B67E36F72A0AB940003743B9 /* TransactionsDetailsLayout.swift */,
+				B67E36F52A0AB8B2003743B9 /* TransactionDetailsVCTableView.swift */,
+				B6C4E99F2A082198002C9845 /* TransactionDetailsCell.swift */,
+			);
+			path = TransactionsDetail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -143,6 +305,13 @@
 			dependencies = (
 			);
 			name = UBank;
+			packageProductDependencies = (
+				B6C4E98A2A07CA46002C9845 /* FirebaseAnalytics */,
+				B6C4E98C2A07CA46002C9845 /* FirebaseAuth */,
+				B6C4E98E2A07CA46002C9845 /* FirebaseAuthCombine-Community */,
+				B6C4E9902A07CA46002C9845 /* FirebaseDatabase */,
+				B6C4E9922A07CA46002C9845 /* FirebaseDatabaseSwift */,
+			);
 			productName = UBank;
 			productReference = B6BF9B002A03C91D0012CCCF /* UBank.app */;
 			productType = "com.apple.product-type.application";
@@ -161,6 +330,10 @@
 				B6BF9B182A03C91F0012CCCF /* PBXTargetDependency */,
 			);
 			name = UBankTests;
+			packageProductDependencies = (
+				B631049A2A0F31880062D89A /* FirebaseAuth */,
+				B631049C2A0F318E0062D89A /* FirebaseDatabase */,
+			);
 			productName = UBankTests;
 			productReference = B6BF9B162A03C91F0012CCCF /* UBankTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -179,6 +352,10 @@
 				B6BF9B222A03C91F0012CCCF /* PBXTargetDependency */,
 			);
 			name = UBankUITests;
+			packageProductDependencies = (
+				B614301C2A0F2F1A00168336 /* FirebaseAuth */,
+				B614301E2A0F2F5C00168336 /* FirebaseDatabase */,
+			);
 			productName = UBankUITests;
 			productReference = B6BF9B202A03C91F0012CCCF /* UBankUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -215,6 +392,9 @@
 				Base,
 			);
 			mainGroup = B6BF9AF72A03C91D0012CCCF;
+			packageReferences = (
+				B6C4E9892A07CA46002C9845 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = B6BF9B012A03C91D0012CCCF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -232,6 +412,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6BF9B102A03C91F0012CCCF /* LaunchScreen.storyboard in Resources */,
+				B6C4E9972A07D6DC002C9845 /* GoogleService-Info.plist in Resources */,
 				B6BF9B0D2A03C91F0012CCCF /* Assets.xcassets in Resources */,
 				B6BF9B0B2A03C91D0012CCCF /* Main.storyboard in Resources */,
 			);
@@ -258,8 +439,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B6BF9B082A03C91D0012CCCF /* ViewController.swift in Sources */,
+				B6BF9B082A03C91D0012CCCF /* LoginVC.swift in Sources */,
+				B6F76DCC2A096D780077E422 /* Misc.swift in Sources */,
+				B6BF9B342A03C9850012CCCF /* MainCoordinator.swift in Sources */,
+				B6D330D72A06B63A00B34157 /* TransactionDetailsVC.swift in Sources */,
+				B6B5CEA92A095C3800CF86C7 /* Alert.swift in Sources */,
+				B69F8C5A2A11CEFD004AF521 /* TransactionsVCSearch.swift in Sources */,
+				B67E36F22A0AB784003743B9 /* TransactionsVCTableView.swift in Sources */,
+				B67E36F02A0AB593003743B9 /* AccountsVCLayout.swift in Sources */,
+				B6C4E9A02A082198002C9845 /* TransactionDetailsCell.swift in Sources */,
+				B67E36F62A0AB8B2003743B9 /* TransactionDetailsVCTableView.swift in Sources */,
+				B6D330C42A06767C00B34157 /* CustomColors.swift in Sources */,
+				B6C4E99A2A07E71F002C9845 /* DataBase.swift in Sources */,
+				B6BF9B362A03C99C0012CCCF /* Coordinator.swift in Sources */,
+				B67E36FE2A0AC919003743B9 /* TransactionVCToolbar.swift in Sources */,
+				B6D330CD2A067BC000B34157 /* AccountsCell.swift in Sources */,
+				B67E36FA2A0ABB03003743B9 /* CustomTableView.swift in Sources */,
+				B6D330D02A06A27100B34157 /* TransactionCell.swift in Sources */,
+				B67E36FC2A0AC8B8003743B9 /* AccountsVCToolbar.swift in Sources */,
+				B67E36EE2A0AB3E7003743B9 /* AccountsVCTableView.swift in Sources */,
+				B6D330D22A06A27A00B34157 /* TransactionsVC.swift in Sources */,
+				B67E36F42A0AB7EC003743B9 /* TransactionVCLayout.swift in Sources */,
+				B6D330CB2A067BB000B34157 /* AccountsVC.swift in Sources */,
+				B6D330C22A06705700B34157 /* WelcomeVC.swift in Sources */,
 				B6BF9B042A03C91D0012CCCF /* AppDelegate.swift in Sources */,
+				B67E36F82A0AB940003743B9 /* TransactionsDetailsLayout.swift in Sources */,
 				B6BF9B062A03C91D0012CCCF /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -602,6 +806,65 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B6C4E9892A07CA46002C9845 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B614301C2A0F2F1A00168336 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6C4E9892A07CA46002C9845 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B614301E2A0F2F5C00168336 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6C4E9892A07CA46002C9845 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		B631049A2A0F31880062D89A /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6C4E9892A07CA46002C9845 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B631049C2A0F318E0062D89A /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6C4E9892A07CA46002C9845 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		B6C4E98A2A07CA46002C9845 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6C4E9892A07CA46002C9845 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		B6C4E98C2A07CA46002C9845 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6C4E9892A07CA46002C9845 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B6C4E98E2A07CA46002C9845 /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6C4E9892A07CA46002C9845 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		B6C4E9902A07CA46002C9845 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6C4E9892A07CA46002C9845 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		B6C4E9922A07CA46002C9845 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B6C4E9892A07CA46002C9845 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B6BF9AF82A03C91D0012CCCF /* Project object */;
 }

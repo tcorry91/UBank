@@ -1,18 +1,22 @@
 //
-//  ViewController.swift
-//  FlightCenterRebuiltForGit
+//  TransactionDetailsVC.swift
+//  UBank
 //
-//  Created by Corry Timothy on 20/4/2023.
+//  Created by Corry Timothy on 8/5/2023.
 //
 
 import UIKit
 import Combine
 import Foundation
+import Firebase
 
-class LoginVC: UIViewController {
-
-  
-   
+class TransactionDetailsVC: UIViewController {
+    let ref = Database.database().reference()
+    var events = [Info]()
+    var receivedId = ""
+    var UserAccount = ""
+    var tableView: UITableView  =   UITableView()
+    let homeCellID = "homeCellID"
     var mainCor: MainCoordinator
     init(coordinator: MainCoordinator) {
         self.mainCor = coordinator
@@ -22,91 +26,31 @@ class LoginVC: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let uid = Auth.auth().currentUser?.uid else { return }
         view.backgroundColor = UIColor.white
         self.navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.isTranslucent = true
-//        self.navigationItem.title = value.localise()
         view.backgroundColor = UIColor.Background
-     setUpTableView()
+        setupTableViewDetails()
+        setUpTableView()
+        fetchData()
     }
     
-    func setUpTableView() {
-        view.addSubview(GreetingsLabel)
-        GreetingsLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 90).isActive = true
-        GreetingsLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 40).isActive = true
-        GreetingsLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-
-        view.addSubview(LogOnButton)
-        LogOnButton.topAnchor.constraint(equalTo: GreetingsLabel.bottomAnchor, constant: 5).isActive = true
-        LogOnButton.leftAnchor.constraint(equalTo: GreetingsLabel.leftAnchor, constant: 0).isActive = true
-        LogOnButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
-        LogOnButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        
+    @objc func fetchData() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let userMessagesRef = Database.database().reference().child("users").child(uid).child("Transactions").child(UserAccount).child(receivedId)
+        userMessagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject] {
+                let event = Info(dictionary: dictionary)
+                event.id = snapshot.key
+                event.Amount = dictionary["Amount"] as? String
+                self.events.append(event)
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
+            }
+        }, withCancel: nil)
     }
-    
-    
-    var GreetingsLabel: UILabel = {
-        var label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .center
-        label.layer.zPosition = 2
-        label.font = UIFont.systemFont(ofSize: 25, weight: UIFont.Weight.heavy)
-        label.textColor = UIColor.black
-        label.backgroundColor = UIColor.clear
-        label.text = "Good evening"
-        label.clipsToBounds = true
-        label.sizeToFit()
-        return label
-    }()
-    
-//    var GreetingsbackgroundLabel: UILabel = {
-//        var label = UILabel()
-//        label.translatesAutoresizingMaskIntoConstraints = false
-//        label.textAlignment = .center
-//        label.layer.zPosition = 2
-//        label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.regular)
-//        label.textColor = UIColor.black
-//        label.backgroundColor = UIColor.white
-////        label.text = "Good Afternoon"
-//        label.clipsToBounds = true
-//        label.sizeToFit()
-//        return label
-//    }()
-  
-    
-    
-    
-    
-    lazy var LogOnButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.backgroundColor = .black
-//        button.setImage(UIImage(systemName: "clear"), for: .normal)
-//        button.tintColor = UIColor.black
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(login), for: .touchUpInside)
-        button.layer.masksToBounds = true
-        button.contentMode = .scaleAspectFit
-
-        button.setTitle("Log In", for: .normal)
-        button.layer.zPosition = 2
-        button.layer.cornerRadius = 7.5
-        return button
-    }()
-    
-    @objc func login() {
-        print("logging in")
-        self.mainCor.Login()
-    }
-    
-    
 }
-
-
-
-
-
-
