@@ -26,4 +26,28 @@ extension String {
             return s
         } else { return "" }
     }
+    func ifLetItS(i: Int?) -> String {
+        if let i = i {
+            return String(i)
+        } else { return "" }
+    }
+    
+    func sDoubleToString(d: Double?) -> String {
+        if let d = d {
+            return String(d)
+        } else { return "" }
+    }
+    
+    func sReFormatDate(s: String, form1: DateFormatter, form2: DateFormatter) -> String {
+        if let date = form1.date(from: s) {
+            return form2.string(from: date)
+        } else { return "" }
+    }
+    
+}
+
+
+
+enum AsyncError: Error {
+    case message(String)
 }

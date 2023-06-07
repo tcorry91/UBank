@@ -1,5 +1,5 @@
 //
-//  AccountsVC.swift
+//  UpcmingPaymentsToolbar.swift
 //  UBank
 //
 //  Created by Corry Timothy on 8/5/2023.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension AccountsVC {
+extension UpcomingPaymentsVC {
     func ToolBarSetup() {
         
         var DividerLine: UILabel = {
@@ -114,7 +114,9 @@ extension AccountsVC {
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
             button.addTarget(self, action: #selector(goingToAccounts), for: .touchUpInside)
             button.layer.zPosition = 5
+            button.layer.cornerRadius = 0
             button.clipsToBounds = true
+            button.layer.cornerRadius = 5
             return button
         }()
         var PaymentButton: UIButton = {
@@ -143,7 +145,7 @@ extension AccountsVC {
             button.layer.cornerRadius = 5
             return button
             
-            
+           
             
         }()
         
@@ -185,7 +187,7 @@ extension AccountsVC {
         }()
         
         
-        
+       
         
         view.addSubview(ToolBarBackground)
         ToolBarBackground.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
@@ -215,6 +217,7 @@ extension AccountsVC {
         AccountsButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
         AccountsButton.widthAnchor.constraint(equalToConstant: 28).isActive = true
         
+        
         view.addSubview(HomeImage)
         HomeImage.topAnchor.constraint(equalTo: AccountsBottomImage.topAnchor, constant: 0).isActive = true
         HomeImage.leftAnchor.constraint(equalTo: AccountsBottomImage.rightAnchor, constant: 70).isActive = true
@@ -236,17 +239,17 @@ extension AccountsVC {
         PaymentImage.leftAnchor.constraint(equalTo: HomeImage.rightAnchor, constant: 70).isActive = true
         PaymentImage.heightAnchor.constraint(equalToConstant: 28).isActive = true
         PaymentImage.widthAnchor.constraint(equalToConstant: 28).isActive = true
-        
+
         view.addSubview(PaymentImageLabel)
         PaymentImageLabel.topAnchor.constraint(equalTo: AccountsBottomImage.bottomAnchor, constant: 0).isActive = true
         PaymentImageLabel.centerXAnchor.constraint(equalTo: PaymentImage.centerXAnchor, constant: 0).isActive = true
-        
+
         view.addSubview(PaymentButton)
         PaymentButton.topAnchor.constraint(equalTo: AccountsBottomImage.topAnchor, constant: 0).isActive = true
         PaymentButton.leftAnchor.constraint(equalTo: HomeImage.rightAnchor, constant: 70).isActive = true
         PaymentButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
         PaymentButton.widthAnchor.constraint(equalToConstant: 28).isActive = true
-        
+
         
         view.addSubview(RewardsImage)
         RewardsImage.topAnchor.constraint(equalTo: AccountsBottomImage.topAnchor, constant: 0).isActive = true
@@ -264,7 +267,7 @@ extension AccountsVC {
         RewardsButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
         RewardsButton.widthAnchor.constraint(equalToConstant: 28).isActive = true
         
-        
+       
         
     }
 }

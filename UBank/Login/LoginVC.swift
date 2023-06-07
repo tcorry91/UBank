@@ -19,18 +19,17 @@ class LoginVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
- 
-   
+    
     
     var emailString = "Jame@gmail.com"
     override func viewDidLoad() {
-    
+        
         super.viewDidLoad()
         PasswordTextField.becomeFirstResponder()
         view.backgroundColor = UIColor.white
         self.navigationController?.isNavigationBarHidden = false
         navigationController?.navigationBar.isTranslucent = true
-  
+        navigationItem.hidesBackButton = true  
         view.backgroundColor = UIColor.Background
         setUpTableView()
     }
@@ -54,8 +53,20 @@ class LoginVC: UIViewController {
         PasswordTextField.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         view.addSubview(EnterLabel)
-        EnterLabel.topAnchor.constraint(equalTo: PasswordTextField.bottomAnchor, constant: 5).isActive = true
+        EnterLabel.topAnchor.constraint(equalTo: PasswordTextField.topAnchor, constant: -25).isActive = true
         EnterLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        
+        
+        view.addSubview(ForgotLabel)
+        ForgotLabel.topAnchor.constraint(equalTo: PasswordTextField.bottomAnchor, constant: 15).isActive = true
+        ForgotLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        
+        
+        view.addSubview(ResetButton)
+        ResetButton.topAnchor.constraint(equalTo: PasswordTextField.bottomAnchor, constant: 15).isActive = true
+        ResetButton.leftAnchor.constraint(equalTo: ForgotLabel.leftAnchor, constant: 0).isActive = true
+        ResetButton.rightAnchor.constraint(equalTo: ForgotLabel.rightAnchor, constant: 0).isActive = true
+        ResetButton.topAnchor.constraint(equalTo: ForgotLabel.topAnchor, constant: 0).isActive = true
     }
     
     var GreetingsLabel: UILabel = {
@@ -84,6 +95,19 @@ class LoginVC: UIViewController {
         label.sizeToFit()
         return label
     }()
+    var ForgotLabel: UILabel = {
+        var label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.layer.zPosition = 2
+        label.font = UIFont.systemFont(ofSize: 11, weight: UIFont.Weight.bold)
+        label.textColor = UIColor.blue
+        label.backgroundColor = UIColor.clear
+        label.text = "Access pin reset"
+        label.clipsToBounds = true
+        label.sizeToFit()
+        return label
+    }()
     let logoImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -108,11 +132,9 @@ class LoginVC: UIViewController {
         tf.textAlignment = .center
         tf.isSecureTextEntry = true
         tf.keyboardType = .asciiCapableNumberPad
-
-        
         return tf
     }()
- 
+    
     lazy var LogOnButton: UIButton = {
         let button = UIButton(type: .custom)
         button.backgroundColor = .black
@@ -120,17 +142,30 @@ class LoginVC: UIViewController {
         button.addTarget(self, action: #selector(handleLoginRegister), for: .touchUpInside)
         button.layer.masksToBounds = true
         button.contentMode = .scaleAspectFit
-        
         button.setTitle("Log In", for: .normal)
-        
-        
         button.layer.zPosition = 2
         button.layer.cornerRadius = 7.5
         return button
     }()
     
+    lazy var ResetButton: UIButton = {
+        let button = UIButton(type: .custom)
+        button.backgroundColor = .clear
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(ResetButtonFunc), for: .touchUpInside)
+        button.layer.masksToBounds = true
+        button.layer.zPosition = 2
+        button.layer.cornerRadius = 7.5
+        return button
+    }()
+    
+    @objc func ResetButtonFunc() {
+        print("forgt your pin?")
+        Alert.show(title: "Pin reset instructions have been emailed to you", message: "", vc: self)
+    }
+    
     @objc func login() {
-        self.mainCor.Login()
+        self.mainCor.MainMenu()
     }
     
     @objc func handleLoginRegister() {
@@ -153,7 +188,6 @@ class LoginVC: UIViewController {
             if error != nil {
                 Alert.show(title: "Incorrect Pin", message: "Please try again", vc: self)
                 return
-                return
             } else {
                 guard let uid = Auth.auth().currentUser?.uid else { return }
                 self.viewLink()
@@ -163,6 +197,6 @@ class LoginVC: UIViewController {
     }
     
     @objc func viewLink() {
-        self.mainCor.Login()
+        self.mainCor.MainMenu()
     }
 }

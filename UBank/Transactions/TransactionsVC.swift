@@ -10,21 +10,18 @@ import Firebase
 import Combine
 
 class TransactionsVC: UIViewController {
-    var events = [Info]()
     private var usersSubscriper: AnyCancellable?
+    var data0 = [UBankModel]()
+    var data1 = [UBankModel]()
+    var data = [UBankModel]()
     var tableView: UITableView  =   UITableView()
     let homeCellID = "homeCellID"
     var SelectedAccount = ""
     var EventId = ""
+    var searching = false
     var Available = ""
     var Balance = ""
-    var eventArraySearch = [Info]()
-    var searchBar: UISearchBar = UISearchBar()
-    var searching = false
-    var searchedTitle = [String]()
     var store = Set<AnyCancellable>()
-    var data0 = [Info]()
-    var data1 = [Info]()
     let ref = Database.database().reference()
     var mainCor: MainCoordinator
     init(coordinator: MainCoordinator) {
@@ -34,16 +31,17 @@ class TransactionsVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.CustomWhite
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
         setUpTableViewDetails()
         setUpTableView()
         ToolBarSetup()
         fetchData()
         changeData()
+        navigationItem.hidesBackButton = true  
+        
     }
     
     func changeData() {
@@ -55,50 +53,192 @@ class TransactionsVC: UIViewController {
         }
     }
     
- 
+    @objc func goingToAccounts() {
+        self.mainCor.Login()
+    }
     
+    @objc func goingToHome() {
+        print("going home")
+        self.mainCor.MainMenu()
+    }
+    
+    @objc func goingToPayments() {
+        self.mainCor.PayInitial()
+    }
+    
+    @objc func goingToRewards() {
+        self.mainCor.CollectionTest()
+    }
+    
+    lazy var searchBarBackground: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.layer.zPosition = 1
+        label.clipsToBounds = true
+        label.layer.borderWidth = 1
+        let color = UIColor.gray
+        label.layer.borderColor = color.cgColor
+        label.layer.cornerRadius = 5
+        return label
+    }()
+    lazy var searchWhiteBackground: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.layer.zPosition = 1
+        label.clipsToBounds = true
+        label.layer.borderWidth = 1
+        let color = UIColor.gray
+        label.layer.borderColor = color.cgColor
+        label.layer.cornerRadius = 5
+        return label
+    }()
+    lazy var searchTextField: UITextView = {
+        let label = UITextView()
+        label.textColor = UIColor.black
+        label.isHidden = false
+        label.backgroundColor = .clear
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.layer.zPosition = 2
+        label.font = UIFont(name: "Arial", size: 16.5)
+        label.textAlignment = NSTextAlignment.left
+        label.returnKeyType = .done
+        label.textContainer.maximumNumberOfLines = 1
+        return label
+    }()
+    lazy var xForSearchImage: UIButton = {
+        let button = UIButton(type: .custom)
+        button.backgroundColor = .white
+        button.setImage(UIImage(systemName: "clear"), for: .normal)
+        button.tintColor = UIColor.black
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(clearText), for: .touchUpInside)
+        button.layer.masksToBounds = true
+        button.contentMode = .scaleAspectFit
+        button.layer.zPosition = 2
+        return button
+    }()
+    @objc func clearText() {
+        self.generalTextField.text = ""
+        DispatchQueue.main.async {
+            //            self.data0 = []
+            self.tableView.reloadData()
+        }
+    }
+    let searchImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .white
+        imageView.image = UIImage(systemName: "magnifyingglass")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.zPosition = 2
+        return imageView
+    }()
+    let EmptySearch: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = .white
+        imageView.image = UIImage(systemName: "magnifyingglass.circle")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        imageView.layer.zPosition = 2
+        return imageView
+    }()
+    
+    var cancellables = Set<AnyCancellable>()
+    
+    lazy var generalTextField: UITextField = {
+        let field = UITextField()
+        field.placeholder = ""
+        field.backgroundColor = .clear
+        field.autocapitalizationType = UITextAutocapitalizationType.none
+        field.translatesAutoresizingMaskIntoConstraints = false
+        field.layer.zPosition = 2
+        field.textColor = UIColor.black
+        field.attributedPlaceholder = NSAttributedString(string: "Search Transactions..", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        field.font = UIFont(name: "Arial", size: 15)
+        field.textAlignment = NSTextAlignment.left
+        field.returnKeyType = .done
+        field.keyboardType = .numberPad
+        field.keyboardAppearance = .light
+        return field
+    }()
+    
+    
+    var TID = ""
     @objc func fetchData() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let userMessagesRef = Database.database().reference().child("users").child(uid).child("Transactions").child(SelectedAccount)
         userMessagesRef.observe(.childAdded, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                let event = Info(dictionary: dictionary)
+                var event = UBankModel(dictionary: dictionary)
                 event.id = snapshot.key
-                event.Amount = dictionary["Amount"] as? String
-                event.Date = dictionary["Date"] as? String
-                event.Desc = dictionary["Desc"] as? String
-                event.Time = dictionary["Time"] as? String
-                event.CurrentBalance = dictionary["CurrentBalance"] as? String
-                event.AvailableBalance = dictionary["AvailableBalance"] as? String
-                self.events.append(event)
-//                print("eventID here", snapshot.key)
-//                self.EventId = snapshot.key
-//                print("eventIdFINAL", self.EventId)
+                self.data.append(event)
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
                 })
             }
         }, withCancel: nil)
     }
-   
     
-    @objc func filterStuff(Text: String) {
-        eventArraySearch = []
-        for i in 0...events.count - 1 {
-            var title = events[i].Desc
-            var eventRow = events[i]
-            if let title = title {
-                if title.contains(Text) {
-                    eventArraySearch.append(eventRow)
-                }
-            }
-            if i == events.count - 1 {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-            }
+    
+    func changeState(type: FlightSearch) {
+        print("SearchTest")
+        searchType = type
+        changedState()
+    }
+    func changedState() {
+        self.generalTextField.text = ""
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0) {
+            self.textInput(text: "", type: self.searchType)
+            self.tableView.reloadData()
         }
     }
+    var searchType: FlightSearch = .departure
+    func setUpTextFieldPublisher() {
+        generalTextField.textPublisher.sink { value in
+            self.textInput(text: value)
+        }.store(in: &cancellables)
+        
+    }
+    func textInput(text: String) {
+        if text == "" { clearText(); return }
+        var t = text.replacingOccurrences(of: " ", with: "+")
+        DispatchQueue.main.async {
+        }
+    }
+    
+    func textInput(text: String, type: FlightSearch) {
+        switch type {
+        case .departure:
+            let searchResults = data1.filter { $0.Desc!.contains(text) }
+            text.count < 1 ? update(type: .original, data: []) : update(type: .search, data: searchResults)
+        case .arrival:
+            let searchResults = data1.filter { $0.Desc!.contains(text) }
+            text.count < 1 ? update(type: .original, data: []) : update(type: .search, data: searchResults)
+        }
+    }
+    
+    func update(type: DataType, data: [UBankModel]) {
+        switch type {
+        case .search:
+            DispatchQueue.main.async { self.data0 = data; self.tableView.reloadData() }
+        case .original:
+            DispatchQueue.main.async { self.data0 = self.data1; self.tableView.reloadData() }
+        }
+    }
+    enum FlightSearch  {
+        case arrival
+        case departure
+    }
+    enum DataType  {
+        case search
+        case original
+    }
+    
+    
     
     @objc func goingToProfile() {
         
@@ -180,8 +320,10 @@ class TransactionsVC: UIViewController {
         label.textAlignment = .left
         return label
     }()
-   
+    
+    
 }
+
 
 
 

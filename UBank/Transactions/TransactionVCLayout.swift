@@ -17,19 +17,8 @@ extension TransactionsVC {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
         tableView.alwaysBounceVertical = false
-      
-        searchBar.layer.zPosition = 100
-        searchBar.delegate = self
-        searchBar.alpha = 1
-        searchBar.backgroundColor = UIColor.white
-        searchBar.placeholder = "Search listings"
-        searchBar.searchBarStyle = .minimal
-        searchBar.barTintColor = UIColor.white
-        searchBar.isTranslucent = false
-        searchBar.layer.cornerRadius = 7.5
-        searchBar.backgroundColor = UIColor.white
-        searchBar.translatesAutoresizingMaskIntoConstraints = false
     }
+    
     func setUpTableView() {
         self.view.addSubview(self.tableView)
         tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 310).isActive = true
@@ -68,11 +57,35 @@ extension TransactionsVC {
         BalanceActual.topAnchor.constraint(equalTo: AvailableLabel.bottomAnchor, constant: 3).isActive = true
         BalanceActual.leftAnchor.constraint(equalTo: BalanceLabel.rightAnchor, constant: 10).isActive = true
         
-        view.addSubview(searchBar)
-        searchBar.topAnchor.constraint(equalTo: BalanceActual.bottomAnchor, constant: 5).isActive = true
-                searchBar.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-                searchBar.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-                searchBar.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        view.addSubview(searchBarBackground)
+        searchBarBackground.topAnchor.constraint(equalTo: BalanceActual.bottomAnchor, constant: 5).isActive = true
+        searchBarBackground.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        searchBarBackground.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        searchBarBackground.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
+        view.addSubview(searchImage)
+        searchImage.centerYAnchor.constraint(equalTo: searchBarBackground.centerYAnchor, constant: 0).isActive = true
+        searchImage.leftAnchor.constraint(equalTo: searchBarBackground.leftAnchor, constant: 20).isActive = true
+        searchImage.widthAnchor.constraint(equalToConstant: 25).isActive = true
+        searchImage.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        
+        view.addSubview(xForSearchImage)
+        xForSearchImage.centerYAnchor.constraint(equalTo: searchBarBackground.centerYAnchor, constant: 0).isActive = true
+        xForSearchImage.rightAnchor.constraint(equalTo: searchBarBackground.rightAnchor, constant: -10).isActive = true
+        xForSearchImage.widthAnchor.constraint(equalToConstant: 35).isActive = true
+        xForSearchImage.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        view.addSubview(generalTextField)
+        generalTextField.centerYAnchor.constraint(equalTo: searchBarBackground.centerYAnchor, constant: 3).isActive = true
+        generalTextField.leftAnchor.constraint(equalTo: searchImage.rightAnchor, constant: 20).isActive = true
+        generalTextField.rightAnchor.constraint(equalTo: xForSearchImage.leftAnchor, constant: -10).isActive = true
+        generalTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
+        view.addSubview(EmptySearch)
+        EmptySearch.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        EmptySearch.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0).isActive = true
+        EmptySearch.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        EmptySearch.widthAnchor.constraint(equalToConstant: 100).isActive = true
     }
 }
+

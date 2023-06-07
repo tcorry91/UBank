@@ -22,4 +22,6 @@ extension UIColor {
     static let CustomWhite = UIColor(r: 248, g: 248, b: 248)
     static let CustomBlack = UIColor(r: 42, g: 42, b: 48)
     static let Customgrey = UIColor(r: 1, g: 1, b: 2)
+    static let RewardsBackground = UIColor(r: 112, g: 77, b: 53)
+    static let LabelBackground = UIColor(r: 255, g: 255, b: 255)
 }

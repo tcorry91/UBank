@@ -5,12 +5,27 @@
 //  Created by Corry Timothy on 8/5/2023.
 //
 
+
 import Foundation
 import UIKit
 
 extension TransactionsVC {
-    
     func ToolBarSetup() {
+        
+        var DividerLine: UILabel = {
+            var label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.textAlignment = .center
+            label.layer.zPosition = 2
+            label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.heavy)
+            label.textColor = UIColor.black
+            label.backgroundColor = UIColor.CustomBlack
+            label.clipsToBounds = true
+            label.layer.cornerRadius = 8.5
+            label.sizeToFit()
+            return label
+        }()
+        
         var ToolBarBackground: UILabel = {
             var label = UILabel()
             label.translatesAutoresizingMaskIntoConstraints = false
@@ -98,11 +113,9 @@ extension TransactionsVC {
             button.backgroundColor = UIColor.clear
             button.setTitleColor(UIColor.white, for: .normal)
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-            button.addTarget(self, action: #selector(goingToProfile), for: .touchUpInside)
+            button.addTarget(self, action: #selector(goingToAccounts), for: .touchUpInside)
             button.layer.zPosition = 5
-            button.layer.cornerRadius = 0
             button.clipsToBounds = true
-            button.layer.cornerRadius = 5
             return button
         }()
         var PaymentButton: UIButton = {
@@ -111,7 +124,7 @@ extension TransactionsVC {
             button.backgroundColor = UIColor.clear
             button.setTitleColor(UIColor.white, for: .normal)
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-            button.addTarget(self, action: #selector(goingToProfile), for: .touchUpInside)
+            button.addTarget(self, action: #selector(goingToPayments), for: .touchUpInside)
             button.layer.zPosition = 5
             button.layer.cornerRadius = 0
             button.clipsToBounds = true
@@ -124,7 +137,47 @@ extension TransactionsVC {
             button.backgroundColor = UIColor.clear
             button.setTitleColor(UIColor.white, for: .normal)
             button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
-            button.addTarget(self, action: #selector(goingToProfile), for: .touchUpInside)
+            button.addTarget(self, action: #selector(goingToRewards), for: .touchUpInside)
+            button.layer.zPosition = 5
+            button.layer.cornerRadius = 0
+            button.clipsToBounds = true
+            button.layer.cornerRadius = 5
+            return button
+            
+            
+            
+        }()
+        
+        let HomeImage: UIImageView = {
+            let imageView = UIImageView()
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.layer.masksToBounds = true
+            imageView.image = UIImage(systemName: "house.fill")
+            imageView.tintColor = UIColor.gray
+            imageView.contentMode = .scaleAspectFit
+            imageView.layer.zPosition = 3
+            return imageView
+        }()
+        var HomeImageLabel: UILabel = {
+            var label = UILabel()
+            label.translatesAutoresizingMaskIntoConstraints = false
+            label.textAlignment = .center
+            label.layer.zPosition = 2
+            label.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.regular)
+            label.textColor = UIColor.CustomBlack
+            label.backgroundColor = UIColor.clear
+            label.text = "Home"
+            label.clipsToBounds = true
+            label.sizeToFit()
+            return label
+        }()
+        var HomeButton: UIButton = {
+            let button = UIButton()
+            button.translatesAutoresizingMaskIntoConstraints = false
+            button.backgroundColor = UIColor.clear
+            button.setTitleColor(UIColor.white, for: .normal)
+            button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+            button.addTarget(self, action: #selector(goingToHome), for: .touchUpInside)
             button.layer.zPosition = 5
             button.layer.cornerRadius = 0
             button.clipsToBounds = true
@@ -132,14 +185,23 @@ extension TransactionsVC {
             return button
         }()
         
+        
+        
+        
         view.addSubview(ToolBarBackground)
-        ToolBarBackground.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 0).isActive = true
+        ToolBarBackground.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -80).isActive = true
         ToolBarBackground.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
         ToolBarBackground.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
         ToolBarBackground.heightAnchor.constraint(equalToConstant: 200).isActive = true
         
+        view.addSubview(DividerLine)
+        DividerLine.topAnchor.constraint(equalTo: ToolBarBackground.topAnchor, constant: 0).isActive = true
+        DividerLine.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        DividerLine.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        DividerLine.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
         view.addSubview(AccountsBottomImage)
-        AccountsBottomImage.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 10).isActive = true
+        AccountsBottomImage.topAnchor.constraint(equalTo: DividerLine.bottomAnchor, constant: 11).isActive = true
         AccountsBottomImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
         AccountsBottomImage.heightAnchor.constraint(equalToConstant: 28).isActive = true
         AccountsBottomImage.widthAnchor.constraint(equalToConstant: 28).isActive = true
@@ -149,14 +211,30 @@ extension TransactionsVC {
         AccountsBottomImageLabel.centerXAnchor.constraint(equalTo: AccountsBottomImage.centerXAnchor, constant: 0).isActive = true
         
         view.addSubview(AccountsButton)
-        AccountsButton.topAnchor.constraint(equalTo: tableView.bottomAnchor, constant: 10).isActive = true
+        AccountsButton.topAnchor.constraint(equalTo: DividerLine.bottomAnchor, constant: 11).isActive = true
         AccountsButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
         AccountsButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
         AccountsButton.widthAnchor.constraint(equalToConstant: 28).isActive = true
         
+        view.addSubview(HomeImage)
+        HomeImage.topAnchor.constraint(equalTo: AccountsBottomImage.topAnchor, constant: 0).isActive = true
+        HomeImage.leftAnchor.constraint(equalTo: AccountsBottomImage.rightAnchor, constant: 70).isActive = true
+        HomeImage.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        HomeImage.widthAnchor.constraint(equalToConstant: 28).isActive = true
+        
+        view.addSubview(HomeImageLabel)
+        HomeImageLabel.topAnchor.constraint(equalTo: AccountsBottomImage.bottomAnchor, constant: 0).isActive = true
+        HomeImageLabel.centerXAnchor.constraint(equalTo: HomeImage.centerXAnchor, constant: 0).isActive = true
+        
+        view.addSubview(HomeButton)
+        HomeButton.topAnchor.constraint(equalTo: AccountsBottomImage.topAnchor, constant: 0).isActive = true
+        HomeButton.leftAnchor.constraint(equalTo: AccountsBottomImage.rightAnchor, constant: 70).isActive = true
+        HomeButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        HomeButton.widthAnchor.constraint(equalToConstant: 28).isActive = true
+        
         view.addSubview(PaymentImage)
         PaymentImage.topAnchor.constraint(equalTo: AccountsBottomImage.topAnchor, constant: 0).isActive = true
-        PaymentImage.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        PaymentImage.leftAnchor.constraint(equalTo: HomeImage.rightAnchor, constant: 70).isActive = true
         PaymentImage.heightAnchor.constraint(equalToConstant: 28).isActive = true
         PaymentImage.widthAnchor.constraint(equalToConstant: 28).isActive = true
         
@@ -166,9 +244,10 @@ extension TransactionsVC {
         
         view.addSubview(PaymentButton)
         PaymentButton.topAnchor.constraint(equalTo: AccountsBottomImage.topAnchor, constant: 0).isActive = true
-        PaymentButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        PaymentButton.leftAnchor.constraint(equalTo: HomeImage.rightAnchor, constant: 70).isActive = true
         PaymentButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
         PaymentButton.widthAnchor.constraint(equalToConstant: 28).isActive = true
+        
         
         view.addSubview(RewardsImage)
         RewardsImage.topAnchor.constraint(equalTo: AccountsBottomImage.topAnchor, constant: 0).isActive = true
@@ -185,5 +264,9 @@ extension TransactionsVC {
         RewardsButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -55).isActive = true
         RewardsButton.heightAnchor.constraint(equalToConstant: 28).isActive = true
         RewardsButton.widthAnchor.constraint(equalToConstant: 28).isActive = true
+        
+        
+        
     }
 }
+

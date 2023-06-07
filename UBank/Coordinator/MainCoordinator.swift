@@ -35,4 +35,32 @@ class MainCoordinator: Coordinator {
         vc.UserAccount = data1
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    
+    func UpcomingPayments() {
+        let vc = UpcomingPaymentsVC(coordinator: self)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    
+    
+    func MainMenu() {
+        let vc = MainMenuVC(coordinator: self)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    
+    func PayInitial() {
+        let vc = PayInitialVC(coordinator: self)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    
+    
+    func CollectionTest() {
+        let vc = ViewController(coordinator: self)
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    
 }

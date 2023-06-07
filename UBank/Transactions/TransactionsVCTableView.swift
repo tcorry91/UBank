@@ -12,16 +12,7 @@ import Combine
 extension TransactionsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: homeCellID, for: indexPath) as! TransactionCell
-        var event = events[indexPath.row]
-        
-        if searching {
-            print("searching started")
-             event = eventArraySearch[indexPath.row]
-        } else {
-            event = events[indexPath.row]
-        }
-        
-        
+        var event = data[indexPath.row]
         cell.contentView.isUserInteractionEnabled = false
         cell.selectionStyle = .none
         cell.TransactionCurrency.text = event.Amount
@@ -30,7 +21,7 @@ extension TransactionsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let event = events[indexPath.row]
+        let event = data[indexPath.row]
         EventId = event.id!
         if event.id! == nil {
             Alert.show(title: "Error: Transaction not found", message: "", vc: self)
@@ -45,11 +36,8 @@ extension TransactionsVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searching {
-         return eventArraySearch.count
         
-        } else {
-            return events.count
-        }
+        return data.count
     }
 }
+

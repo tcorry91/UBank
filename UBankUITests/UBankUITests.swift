@@ -41,7 +41,7 @@ final class UBankUITests: XCTestCase {
         backButton.tap()
         tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"Bills")/*[[".cells.containing(.staticText, identifier:\"$-469.01\")",".cells.containing(.staticText, identifier:\"$1,500.00\")",".cells.containing(.staticText, identifier:\"135790\")",".cells.containing(.staticText, identifier:\"Bills\")"],[[[-1,3],[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.children(matching: .other).element(boundBy: 0).children(matching: .other).element.tap()
         backButton.tap()
-
+//test finish
     
               
         

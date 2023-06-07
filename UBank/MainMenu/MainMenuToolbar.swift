@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-extension AccountsVC {
+extension MainMenuVC {
     func ToolBarSetup() {
         
         var DividerLine: UILabel = {
@@ -268,3 +268,5 @@ extension AccountsVC {
         
     }
 }
+
+

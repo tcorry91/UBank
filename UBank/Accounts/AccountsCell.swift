@@ -21,10 +21,10 @@ class AccountsCell: UITableViewCell {
         
         AccountNumber.topAnchor.constraint(equalTo: AccountTitle.bottomAnchor, constant: 5).isActive = true
         AccountNumber.leftAnchor.constraint(equalTo: AccountTitle.leftAnchor, constant: 0).isActive = true
-
+        
         AvailableLabel.topAnchor.constraint(equalTo: AccountNumber.bottomAnchor, constant: 20).isActive = true
         AvailableLabel.leftAnchor.constraint(equalTo: AccountNumber.leftAnchor, constant: 0).isActive = true
-                
+        
         BalanceLabel.topAnchor.constraint(equalTo: AvailableLabel.bottomAnchor, constant: 10).isActive = true
         BalanceLabel.leftAnchor.constraint(equalTo: AvailableLabel.leftAnchor, constant: 0).isActive = true
         
@@ -44,7 +44,7 @@ class AccountsCell: UITableViewCell {
         LogOnButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         LogOnButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
     }
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
         self.contentView.isUserInteractionEnabled = true
@@ -172,7 +172,7 @@ class AccountsCell: UITableViewCell {
         button.layer.cornerRadius = 7.5
         return button
     }()
-
+    
     @objc func Options() {
         print("options selected")
     }

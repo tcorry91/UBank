@@ -36,11 +36,21 @@ extension AccountsVC {
         UpcomingLabel.centerYAnchor.constraint(equalTo: WhiteLabel.centerYAnchor, constant: 0).isActive = true
         UpcomingLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
         
+        view.addSubview(UpcomingPaymentsButton)
+        UpcomingPaymentsButton.centerYAnchor.constraint(equalTo: WhiteLabel.centerYAnchor, constant: 0).isActive = true
+        UpcomingPaymentsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        UpcomingPaymentsButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
+        UpcomingPaymentsButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
+        UpcomingPaymentsButton.heightAnchor.constraint(equalToConstant: 53).isActive = true
+       
+        
         view.addSubview(CalendarImage)
         CalendarImage.topAnchor.constraint(equalTo: UpcomingLabel.topAnchor, constant: 0).isActive = true
         CalendarImage.leftAnchor.constraint(equalTo: AccountsLabel.leftAnchor, constant: 0).isActive = true
         CalendarImage.heightAnchor.constraint(equalToConstant: 30).isActive = true
         CalendarImage.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        
         
         self.view.addSubview(self.tableView)
         tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 170).isActive = true

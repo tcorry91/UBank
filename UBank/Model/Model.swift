@@ -8,20 +8,22 @@
 import Foundation
 import Firebase
 import UIKit
+import Combine
 
-class Info: NSObject {
-   
-    var CurrentBalance: String?
-    var AvailableBalance: String?
+
+struct UBankModel: Codable {
+    
+    let CurrentBalance: String?
+    let AvailableBalance: String?
     var id: String?
-    var ProductName: String?
-    var AccountId: String?
-    var Amount: String?
-    var Date: String?
-    var Desc: String?
-    var Time: String?
-    var Receipt: String?
- 
+    let ProductName: String?
+    let AccountId: String?
+    let Amount: String?
+    let Date: String?
+    let Desc: String?
+    let Time: String?
+    let Receipt: String?
+    
     init(dictionary: [String: AnyObject]) {
         
         self.CurrentBalance = dictionary["CurrentBalance"] as? String
@@ -34,5 +36,6 @@ class Info: NSObject {
         self.Desc = dictionary["Desc"] as? String
         self.Time = dictionary["Time"] as? String
         self.Receipt = dictionary["Receipt"] as? String
+        
     }
 }

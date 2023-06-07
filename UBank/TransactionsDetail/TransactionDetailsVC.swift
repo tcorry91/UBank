@@ -12,7 +12,7 @@ import Firebase
 
 class TransactionDetailsVC: UIViewController {
     let ref = Database.database().reference()
-    var events = [Info]()
+    var events = [UBankModel]()
     var receivedId = ""
     var UserAccount = ""
     var tableView: UITableView  =   UITableView()
@@ -43,9 +43,7 @@ class TransactionDetailsVC: UIViewController {
         let userMessagesRef = Database.database().reference().child("users").child(uid).child("Transactions").child(UserAccount).child(receivedId)
         userMessagesRef.observeSingleEvent(of: .value, with: { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                let event = Info(dictionary: dictionary)
-                event.id = snapshot.key
-                event.Amount = dictionary["Amount"] as? String
+                let event = UBankModel(dictionary: dictionary)
                 self.events.append(event)
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
